@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ritika Tech Hub - Complete Learning Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+:root {
+    --primary: #6366f1;
+    --primary-dark: #4f46e5;
+    --secondary: #8b5cf6;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --bg: #ffffff;
+    --bg-alt: #f9fafb;
+    --text: #1f2937;
+    --text-light: #6b7280;
+    --border: #e5e7eb;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+    --bg: #111827;
+    --bg-alt: #1f2937;
+    --text: #f9fafb;
+    --text-light: #9ca3af;
+    --border: #374151;
+    --shadow: rgba(0, 0, 0, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    transition: background 0.3s, color 0.3s;
+}
+
+.navbar {
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: var(--primary);
+}
+
+.theme-toggle {
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    color: var(--text);
+    transition: all 0.3s;
+}
+
+.theme-toggle:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.hero {
+    padding: 6rem 2rem;
+    text-align: center;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    font-weight: 800;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    margin-bottom: 3rem;
+    opacity: 0.9;
+}
+
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.stat h3 {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.stat p {
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+.btn-hero {
+    padding: 1rem 2rem;
+    background: white;
+    color: var(--primary);
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-hero:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.section {
+    padding: 5rem 2rem;
+}
+
+.bg-alt {
+    background: var(--bg-alt);
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-light);
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}
+
+.roadmap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.roadmap-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.roadmap-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px var(--shadow);
+    border-color: var(--primary);
+}
+
+.roadmap-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.roadmap-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.roadmap-card p {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+}
+
+.course-meta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    color: var(--text-light);
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 0.75rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    transform: scale(1.02);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    overflow-y: auto;
+}
+
+.modal-content {
+    background: var(--bg);
+    margin: 2rem auto;
+    padding: 2rem;
+    border-radius: 16px;
+    max-width: 1200px;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 1.5rem;
+    top: 1.5rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--text-light);
+}
+
+.close:hover {
+    color: var(--danger);
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.video-card {
+    background: var(--bg-alt);
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.video-card:hover {
+    transform: scale(1.02);
+}
+
+.video-thumbnail {
+    position: relative;
+    width: 100%;
+    height: 180px;
+}
+
+.video-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.play-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    color: white;
+    opacity: 0.9;
+}
+
+.video-info {
+    padding: 1rem;
+}
+
+.video-info h4 {
+    margin-bottom: 0.5rem;
+}
+
+.footer {
+    background: var(--bg-alt);
+    border-top: 1px solid var(--border);
+    padding: 3rem 2rem 1rem;
+    text-align: center;
+}
+
+.footer-bottom {
+    padding-top: 2rem;
+    color: var(--text-light);
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-stats {
+        gap: 2rem;
+    }
+    
+    .roadmap-grid {
+        grid-template-columns: 1fr;
+    }
+}
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-code"></i>
+                <span>Ritika Tech Hub</span>
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#roadmaps" class="nav-link">Roadmaps</a>
+                <a href="#videos" class="nav-link">Videos</a>
+            </div>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Master Technology, One Step at a Time</h1>
+            <p>Complete learning platform with roadmaps, video lectures, and interactive challenges</p>
+            <div class="hero-stats">
+                <div class="stat"><h3>8+</h3><p>Tech Fields</p></div>
+                <div class="stat"><h3>200+</h3><p>Video Lectures</p></div>
+                <div class="stat"><h3>500+</h3><p>Challenges</p></div>
+                <div class="stat"><h3>50+</h3><p>Projects</p></div>
+            </div>
+            <button class="btn-hero" onclick="document.getElementById('roadmaps').scrollIntoView({behavior:'smooth'})">
+                Start Learning Now
+            </button>
+        </div>
+    </section>
+
+    <section id="roadmaps" class="section">
+        <div class="container">
+            <h2 class="section-title">Learning Roadmaps</h2>
+            <p class="section-subtitle">Step-by-step guided paths to master any technology</p>
+            <div class="roadmap-grid" id="roadmapGrid"></div>
+        </div>
+    </section>
+
+    <div id="courseModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <div id="courseContent"></div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Ritika Tech Hub. Built with ❤️ by Bhindi AI</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+const COURSES = {
+    webdev: {
+        id: 'webdev',
+        title: 'Web Development',
+        icon: 'fa-globe',
+        description: 'Complete web development from basics to advanced',
+        videos: [
+            {id: 'v1', title: 'HTML Basics', youtubeId: 'qz0aGYrrlhU', duration: '15:30'},
+            {id: 'v2', title: 'CSS Flexbox', youtubeId: 'JJSoEo8JSnc', duration: '22:10'},
+            {id: 'v3', title: 'JavaScript Intro', youtubeId: 'W6NZfCO5SIk', duration: '19:45'}
+        ]
+    },
+    dsa: {
+        id: 'dsa',
+        title: 'Data Structures',
+        icon: 'fa-project-diagram',
+        description: 'Master DSA for coding interviews',
+        videos: [
+            {id: 'v4', title: 'Arrays', youtubeId: 'AT14lCXuMKI', duration: '25:00'},
+            {id: 'v5', title: 'Linked Lists', youtubeId: 'R9PTBwOzceo', duration: '30:15'}
+        ]
+    },
+    python: {
+        id: 'python',
+        title: 'Python Programming',
+        icon: 'fa-python',
+        description: 'Learn Python from scratch',
+        videos: [
+            {id: 'v6', title: 'Python Basics', youtubeId: '_uQrJ0TkZlc', duration: '20:00'},
+            {id: 'v7', title: 'Python Functions', youtubeId: 'u-OmVr_fT4s', duration: '18:30'}
+        ]
+    },
+    react: {
+        id: 'react',
+        title: 'React.js',
+        icon: 'fa-react',
+        description: 'Build modern web apps with React',
+        videos: [
+            {id: 'v8', title: 'React Intro', youtubeId: 'Tn6-PIqc4UM', duration: '17:30'},
+            {id: 'v9', title: 'React Hooks', youtubeId: 'O6P86uwfdR0', duration: '22:45'}
+        ]
+    }
+};
+
+function renderRoadmaps() {
+    const grid = document.getElementById('roadmapGrid');
+    grid.innerHTML = Object.values(COURSES).map(course => `
+        <div class="roadmap-card" onclick="openCourse('${course.id}')">
+            <div class="roadmap-icon"><i class="fas ${course.icon}"></i></div>
+            <h3>${course.title}</h3>
+            <p>${course.description}</p>
+            <div class="course-meta">
+                <span><i class="fas fa-video"></i> ${course.videos.length} videos</span>
+            </div>
+            <button class="btn-primary">Start Learning</button>
+        </div>
+    `).join('');
+}
+
+function openCourse(courseId) {
+    const course = COURSES[courseId];
+    const content = document.getElementById('courseContent');
+    content.innerHTML = `
+        <h2>${course.title}</h2>
+        <p>${course.description}</p>
+        <div class="video-grid">
+            ${course.videos.map(video => `
+                <div class="video-card" onclick="window.open('https://youtube.com/watch?v=${video.youtubeId}', '_blank')">
+                    <div class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/${video.youtubeId}/mqdefault.jpg" alt="${video.title}">
+                        <div class="play-overlay"><i class="fas fa-play-circle"></i></div>
+                    </div>
+                    <div class="video-info">
+                        <h4>${video.title}</h4>
+                        <p><i class="fas fa-clock"></i> ${video.duration}</p>
+                    </div>
+                </div>
+            `).join('')}
+        </div>
+    `;
+    document.getElementById('courseModal').style.display = 'block';
+}
+
+document.getElementById('closeModal').onclick = () => {
+    document.getElementById('courseModal').style.display = 'none';
+};
+
+document.getElementById('themeToggle').addEventListener('click', () => {
+    const html = document.documentElement;
+    const current = html.getAttribute('data-theme');
+    const newTheme = current === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', newTheme);
+    document.getElementById('themeToggle').innerHTML = newTheme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+});
+
+window.onclick = (e) => {
+    if (e.target.classList.contains('modal')) {
+        e.target.style.display = 'none';
+    }
+};
+
+renderRoadmaps();
+    </script>
+</body>
+</html>
